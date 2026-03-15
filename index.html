@@ -20,11 +20,31 @@ display:block;
 
 <body>
 
-<img src="https://picsum.photos/600/800?1">
-<img src="https://picsum.photos/600/800?2">
-<img src="https://picsum.photos/600/800?3">
-<img src="https://picsum.photos/600/800?4">
-<img src="https://picsum.photos/600/800?5">
+<div id="gallery"></div>
+
+<script>
+const user = "trnvy2-beep";
+const repo = "-ng-xuy-n-ti-nhi-Th-iB-nh-";
+
+fetch(`https://api.github.com/repos/${user}/${repo}/contents`)
+.then(res => res.json())
+.then(files => {
+
+files.forEach(file => {
+
+if(file.name.endsWith(".jpg") || file.name.endsWith(".jpeg") || file.name.endsWith(".png")){
+
+const img = document.createElement("img");
+img.src = file.download_url;
+
+document.getElementById("gallery").appendChild(img);
+
+}
+
+});
+
+});
+</script>
 
 </body>
 </html>
