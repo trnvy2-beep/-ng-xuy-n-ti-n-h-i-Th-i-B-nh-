@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Gallery</title>
-
 <style>
 body{
 margin:0;
 background:black;
 }
-
 img{
 width:100%;
 display:block;
 }
 </style>
-
 </head>
 
 <body>
@@ -31,7 +26,6 @@ fetch(`https://api.github.com/repos/${user}/${repo}/contents`)
 .then(files => {
 
 files.forEach(file => {
-
 if(file.name.endsWith(".jpg") || file.name.endsWith(".jpeg") || file.name.endsWith(".png")){
 
 const img = document.createElement("img");
@@ -40,7 +34,6 @@ img.src = file.download_url;
 document.getElementById("gallery").appendChild(img);
 
 }
-
 });
 
 });
